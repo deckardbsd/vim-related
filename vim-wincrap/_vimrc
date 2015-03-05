@@ -107,6 +107,9 @@ Plugin 'Valloric/ListToggle'
 
 " " Js - Tern - you need node installed and tern(code-analysis engine) package.
 " Plugin 'marijnh/tern_for_vim'
+ 
+" CSS-color 
+Plugin 'ap/vim-css-color'
 
 
 
@@ -225,6 +228,9 @@ set cursorline
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
+
+" CtrlP - customizations
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 
 " Python Checker for Syntastic
 let g:syntastic_c_compiler = 'gcc'
