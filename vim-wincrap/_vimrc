@@ -63,10 +63,10 @@ Plugin 'mattn/emmet-vim'
 " NERDTree
 Plugin 'scrooloose/nerdtree.git'
 
-" plugin MRU
+" MRU
 Plugin 'mru.vim'
 
-" plugin Flake8
+" Flake8
 Plugin 'nvie/vim-flake8'
 
 " MatchIt
@@ -110,6 +110,9 @@ Plugin 'Valloric/ListToggle'
  
 " CSS-color 
 Plugin 'ap/vim-css-color'
+
+" Ag.vim
+Plugin 'rking/ag.vim'
 
 
 
@@ -172,7 +175,7 @@ set pastetoggle=<leader>p
 
 " Line numbers and relative numbers
 set number
-set relativenumber
+" set relativenumber
 
 " tcommenter map
 map <leader>c <c-_><c-_>
@@ -258,7 +261,7 @@ let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 
 " ctags stuff
-set autochdir
+" set autochdir
 set tags=tags
 
 " Emmet stuff
@@ -276,7 +279,7 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
     " Use ag in CtrlP for listing files.
-    let g:ctrlp_user_command = 'ag % -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -lu --nocolor -g ""'
 
     " ag is gast enough that CtrlP doesn't need to cache
     let g:ctrlp_user_caching = 0
