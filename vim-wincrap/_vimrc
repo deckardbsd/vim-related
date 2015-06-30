@@ -96,9 +96,6 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 " SLIMvo
 Plugin 'https://github.com/kovisoft/slimv.git'
 
-" Solarized
-Plugin 'altercation/vim-colors-solarized'
-
 " Vim-Dispatch
 Plugin 'tpope/vim-dispatch' 
 
@@ -114,6 +111,31 @@ Plugin 'ap/vim-css-color'
 " Ag.vim
 Plugin 'rking/ag.vim'
 
+" a.vim
+Plugin 'vim-scripts/a.vim'
+
+" Cpp highlight
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" Detectindent
+Plugin 'ciaranm/detectindent'
+
+" Pandoc
+Plugin 'vim-pandoc/vim-pandoc'
+
+" Autoclose
+Plugin 'Townk/vim-autoclose'
+
+" Async
+Plugin 'idbrii/AsyncCommand'
+
+""" Prodigy - true colors
+
+" Solarized
+Plugin 'altercation/vim-colors-solarized'
+
+" Material
+Plugin 'jdkanani/vim-material-theme'
 
 
 " All of your Plugins must be added before the following line
@@ -135,6 +157,9 @@ filetype plugin indent on    " required
 " }}}
 
 " My customizations {{{
+
+" guioptions
+set guioptions=
 
 " hidden
 set hidden
@@ -160,6 +185,7 @@ let mapleader="\\"
 
 " set the font that I want
 set guifont=Consolas:h9:cANSI
+" set guifont=Ubuntu_Mono:h10:cANSI
 
 " Syntax highlight
 syntax on
@@ -200,9 +226,8 @@ map rx: :VimuxCloseRunner
 map rs :VimuxInterruptRunner
 
 " set colorscheme
-" colorscheme morning
+colorscheme koehler 
 set background=dark
-colorscheme solarized
 
 " turn on command line completition wild style
 set wildmenu
@@ -239,17 +264,20 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_c_checkers=['make']
+let g:syntastic_c_checkers=['make', 'splint', 'gcc', 'clang_check' ]
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='x'
 let g:syntastic_style_error_symbol='!x'
 let g:syntastic_warning_symbol='w'
 let g:syntastic_style_warning_symbol='!w'
-set statusline+=%warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*gbar
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
 " YouCompleteMe Plugin - yum_extra_config.py path
 let g:ycm_extra_conf_globlist = ['/Users/sboboc.ROMANIA/vimfiles/bundle/ycm/ycmd/cpp/*', '!~/*']
@@ -259,6 +287,7 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+" let g:ycm_show_diagnostics_ui = 0
 
 " ctags stuff
 " set autochdir
@@ -270,16 +299,23 @@ autocmd FileType djangohtml, htmldjango, html, css, js EmmetInstall
 "UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " The Silver Searcher
 if executable('ag')
     " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ -i\ --nogroup\ --nocolor
 
-    " Use ag in CtrlP for listing files.
-    let g:ctrlp_user_command = 'ag %s -lu --nocolor -g ""'
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
 
     " ag is gast enough that CtrlP doesn't need to cache
     let g:ctrlp_user_caching = 0
@@ -300,6 +336,10 @@ autocmd FileType python set sts=4
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set tags="D:/repo/tags"
+
+" clean allow only good citizens (chars)
+cmap <leader>r :%s/[^[:alnum:][:punct:][:space:]]//gc <CR>
 
 
 " }}}
