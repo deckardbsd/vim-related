@@ -87,9 +87,6 @@ Plugin 'benmills/vimux'
 " MatchTagAlways
 Plugin 'Valloric/MatchTagAlways'
 
-" Doxygen-Toolkit
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-
 " Slimux
 " Plugin 'https://github.com/epeli/slimux.git'
 
@@ -111,8 +108,17 @@ Plugin 'ap/vim-css-color'
 " Ag.vim
 Plugin 'rking/ag.vim'
 
+" multisearch
+Plugin 'vim-scripts/multisearch.vim'
+
 " a.vim
 Plugin 'vim-scripts/a.vim'
+
+" gnu global
+Plugin 'vim-scripts/gtags.vim'
+
+" Doxygen-Toolkit
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 
 " Cpp highlight
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -135,7 +141,7 @@ Plugin 'idbrii/AsyncCommand'
 Plugin 'altercation/vim-colors-solarized'
 
 " Material
-Plugin 'jdkanani/vim-material-theme'
+Plugin 'kristijanhusak/vim-hybrid-material'
 
 
 " All of your Plugins must be added before the following line
@@ -206,9 +212,12 @@ set number
 " tcommenter map
 map <leader>c <c-_><c-_>
 
+" map multisearch
+:map <silent> \m :Msearch add /<C-R>=expand("<cword>")<CR>/<Enter>
+:map <silent> \mm :Msearch! delete<Enter> 
+
 " Powerline
 " Not using on windows
-
 
 " Prompt for command run
 map rp :VimuxPromptCommand
@@ -305,16 +314,18 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " The Silver Searcher
 if executable('ag')
     " Use ag over grep
-    set grepprg=ag\ -i\ --nogroup\ --nocolor
+    " set grepprg=ag\ -i\ --nogroup\ --nocolor\
+    set grepprg=ag
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
+    let g:ctrlp_user_command = 'ag -l --nocolor --nogroup --hidden
       \ --ignore .git
+      \ --ignore Manager32
       \ --ignore .svn
       \ --ignore .hg
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
-      \ -g ""'
+      \ -g "" %s'
 
 
     " ag is gast enough that CtrlP doesn't need to cache
