@@ -189,6 +189,11 @@ filetype plugin on
 " set the leader key
 let mapleader="\\"
 
+" highlight whitespaces in a convienent way
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+autocmd filetype xml, html, json set listchars-=tab:>.
+
 " set the font that I want
 set guifont=Consolas:h9:cANSI
 " set guifont=Ubuntu_Mono:h10:cANSI
@@ -339,9 +344,12 @@ endif
 let g:dbtext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=parola:dbname=dbname'
 
 " Python / Django development
-autocmd FileType python set sw=4
-autocmd FileType python set ts=4
-autocmd FileType python set sts=4
+if has('autocmd')
+    autocmd FileType python set sw=4
+    autocmd FileType python set ts=4
+    autocmd FileType python set sts=4
+    autocmd FIleType python set expandtab
+endif
 
 """ AVAYA CS
 set shiftwidth=4
