@@ -2,7 +2,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" set the runtime path to include Dein and initialize
 set rtp^=~/vimfiles/bundle/dein/repos/github.com/Shougo/dein.vim
 let path='~/vimfiles/bundle/dein/'
 call dein#begin(expand(path))
