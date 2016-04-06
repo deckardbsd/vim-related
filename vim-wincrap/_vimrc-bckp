@@ -1,91 +1,145 @@
-" Vim Defaults and Dein Plugins {{{
+" Vim Defaults and Vundle Plugins {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp^=~/vimfiles/bundle/dein/repos/github.com/Shougo/dein.vim
-let path='~/vimfiles/bundle/dein/'
-call dein#begin(expand(path))
+set rtp+=~/vimfiles/bundle/Vundle.vim/
+let path='~/vimfiles/bundle'
+call vundle#begin(path)
 
-" Let Dein manage Dein
-call dein#add('Shougo/dein.vim')
 
-" Vimproc
-call dein#add('Shougo/vimproc.vim')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Fugitive
-call dein#add('tpope/vim-fugitive')
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" YouCompleteMe
-call dein#add('Valloric/YouCompleteMe')
+" Valloric YouCompleteMe - uber plugin
+Plugin 'file:///vimfiles/bundle/ycm'
+" Plugin 'Valloric/YouCompleteMe'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
 
 " CtrlP plugin 
-call dein#add('kien/ctrlp.vim')
+Plugin 'kien/ctrlp.vim'
 
-" Gundo
-call dein#add('gundo')
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
 
-" EMMET
-call dein#add('mattn/emmet-vim')
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim'}
+
+" UltiSnips
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+
+" Syntastic
+Plugin 'scrooloose/syntastic'
+
+" GUNDO 
+Plugin 'gundo'
 
 " indentLine
 Plugin 'Yggdroot/indentLine'
 
-" UltiSnips
-call dein#add('SirVer/ultisnips')
+" EMMET
+Plugin 'mattn/emmet-vim'
 
-" Snippets are separated from the engine. Add this if you want them:
-call dein#add('honza/vim-snippets')
-
-" Syntastic
-call dein#add('scrooloose/syntastic')
+" Cute Python
+" Plugin 'ehamberg/vim-cute-python'
 
 " NERDTree
-call dein#add('scrooloose/nerdtree.git')
+Plugin 'scrooloose/nerdtree.git'
 
 " MRU
-call dein#add('mru.vim')
-
-" Tagbar
-call dein#add('majutsushi/tagbar')
-
-" Jedi
-call dein#add('davidhalter/jedi-vim')
+Plugin 'mru.vim'
 
 " Flake8
-call dein#add('nvie/vim-flake8')
+Plugin 'nvie/vim-flake8'
 
 " MatchIt
-call dein#add('tmhedberg/matchit')
+Plugin 'tmhedberg/matchit'
 
 " Surround
-call dein#add('tpope/vim-surround')
+Plugin 'tpope/vim-surround'
 
-" ListToggle
-call dein#add('Valloric/ListToggle')
+" Tagbar
+Plugin 'majutsushi/tagbar'
 
 " TComment
-call dein#add('tComment')
+Plugin 'tComment'
+
+" VIMUX
+Plugin 'benmills/vimux'
 
 " MatchTagAlways
-call dein#add('Valloric/MatchTagAlways')
+Plugin 'Valloric/MatchTagAlways'
+
+" ListToggle
+Plugin 'Valloric/ListToggle'
+
+" " Js - Tern - you need node installed and tern(code-analysis engine) package.
+" Plugin 'marijnh/tern_for_vim'
+ 
+" CSS-color 
+Plugin 'ap/vim-css-color'
 
 " Ag.vim
-call dein#add('rking/ag.vim')
-
-" a.vim
-call dein#add('vim-scripts/a.vim')
+Plugin 'rking/ag.vim'
 
 " Auto Close Eclipse
-call dein#add('Townk/vim-autoclose')
+Plugin 'Townk/vim-autoclose'
+
+" multisearch
+Plugin 'vim-scripts/multisearch.vim'
+
+" a.vim
+Plugin 'vim-scripts/a.vim'
+
+" gnu global
+Plugin 'vim-scripts/gtags.vim'
+
+" Doxygen-Toolkit
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+
+" Cpp highlight
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" Detectindent
+Plugin 'ciaranm/detectindent'
+
+" Pandoc
+Plugin 'vim-pandoc/vim-pandoc'
+
+" Async
+Plugin 'idbrii/AsyncCommand'
+
+""" Prodigy - true colors
 
 " Solarized
-call dein#add('altercation/vim-colors-solarized')
+Plugin 'altercation/vim-colors-solarized'
 
+" Molokai
+Plugin 'tomasr/molokai'
+
+" Material
+Plugin 'kristijanhusak/vim-hybrid-material'
 
 
 " All of your Plugins must be added before the following line
-call dein#end()            " required
+call vundle#end()            " required
 "
 " Brief help
 " :PluginList       - lists configured plugins
